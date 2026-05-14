@@ -1,0 +1,20 @@
+[project]
+name = "nldate"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+[tool.uv]
+package = true
+
+[tool.ruff]
+line-length = 88
+
+[tool.mypy]
+strict = true
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "mypy",
+    "ruff",
+]
