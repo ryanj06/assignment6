@@ -69,9 +69,14 @@ def parse(s: str, today: date | None = None) -> date:
         month, day, year = match.groups()
         return date(int(year), MONTHS[month], int(day))
 
-    match = re.match(r"(\d{4})-(\d{2})-(\d{2})", text)
+    match = re.match(r"(\d{4})[-/](\d{1,2})[-/](\d{1,2})", text)
     if match:
         y, m, d = map(int, match.groups())
+        return date(y, m, d)
+
+    match = re.match(r"(\d{1,2})/(\d{1,2})/(\d{4})", text)
+    if match:
+        m, d, y = map(int, match.groups())
         return date(y, m, d)
 
     raise ValueError(f"Could not parse: {s}")
