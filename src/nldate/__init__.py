@@ -81,6 +81,9 @@ def parse(s: str, today: date | None = None) -> date:
         return today + timedelta(days=1)
     if text == "the day after tomorrow":
         return today + timedelta(days=2)
+    if text == "the day before yesterday":
+        return today - timedelta(days=2)
+
     if text == "yesterday":
         return today - timedelta(days=1)
 
