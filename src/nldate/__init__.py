@@ -84,6 +84,9 @@ def parse(s: str, today: date | None = None) -> date:
     if text == "yesterday":
         return today - timedelta(days=1)
 
+    if text == "the day before yesterday":
+        return today - timedelta(days=2)
+
     weekday = parse_weekday(text, today)
     if weekday is not None:
         return weekday
