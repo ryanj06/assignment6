@@ -4,28 +4,48 @@ import re
 from datetime import date, timedelta
 
 MONTHS = {
-    "january": 1, "jan": 1,
-    "february": 2, "feb": 2,
-    "march": 3, "mar": 3,
-    "april": 4, "apr": 4,
+    "january": 1,
+    "jan": 1,
+    "february": 2,
+    "feb": 2,
+    "march": 3,
+    "mar": 3,
+    "april": 4,
+    "apr": 4,
     "may": 5,
-    "june": 6, "jun": 6,
-    "july": 7, "jul": 7,
-    "august": 8, "aug": 8,
-    "september": 9, "sep": 9,
-    "october": 10, "oct": 10,
-    "november": 11, "nov": 11,
-    "december": 12, "dec": 12,
+    "june": 6,
+    "jun": 6,
+    "july": 7,
+    "jul": 7,
+    "august": 8,
+    "aug": 8,
+    "september": 9,
+    "sep": 9,
+    "october": 10,
+    "oct": 10,
+    "november": 11,
+    "nov": 11,
+    "december": 12,
+    "dec": 12,
 }
 
 WEEKDAYS = {
-    "monday": 0, "tuesday": 1, "wednesday": 2,
-    "thursday": 3, "friday": 4, "saturday": 5, "sunday": 6,
+    "monday": 0,
+    "tuesday": 1,
+    "wednesday": 2,
+    "thursday": 3,
+    "friday": 4,
+    "saturday": 5,
+    "sunday": 6,
 }
 
 NUMBER_WORDS = {
-    "one": 1, "two": 2, "three": 3,
-    "four": 4, "five": 5, "six": 6,
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
 }
 
 
@@ -33,7 +53,7 @@ def parse(s: str, today: date | None = None) -> date:
     if today is None:
         today = date.today()
 
-    text = s.lower().strip().replace(",", "")
+    text = s.lower().strip().replace(",", "").replace(".", "")
     text = re.sub(r"(\d+)(st|nd|rd|th)", r"\1", text)
 
     if text == "today":
