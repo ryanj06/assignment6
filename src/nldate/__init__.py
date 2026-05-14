@@ -69,6 +69,11 @@ def parse(s: str, today: date | None = None) -> date:
             n = parse_num(match.group(1))
             return today + timedelta(days=n)
 
+        match = re.match(r"in (\d+|\w+) weeks?", text)
+        if match:
+            n = parse_num(match.group(1))
+            return today + timedelta(weeks=n)
+
     if text.startswith("next "):
         day = text.split()[1]
         target = WEEKDAYS[day]
