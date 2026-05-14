@@ -165,6 +165,10 @@ def parse_relative(text: str, today: date) -> date | None:
     match = re.fullmatch(r"(.+) (from|after) (.+)", text)
     if match:
         amount_text, _word, base_text = match.groups()
+
+        if base_text == "now":
+            return apply_offsets(today, amount_text, 1)
+
         return apply_offsets(parse(base_text, today), amount_text, 1)
 
     match = re.fullmatch(r"(.+) before (.+)", text)
